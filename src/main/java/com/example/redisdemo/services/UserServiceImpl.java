@@ -4,27 +4,25 @@ import com.example.redisdemo.Dto.UserDto;
 import com.example.redisdemo.mapper.UserMapper;
 import com.example.redisdemo.model.User;
 import com.example.redisdemo.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private UserMapper userMapper;
+
     @Override
     @Cacheable("users")
     public Page<UserDto> getAllUsers(int page, int size) {
@@ -42,13 +40,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @CacheEvict(value = "users", allEntries = true)
+//    @CacheEvict(value = "users", allEntries = true)
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    @CacheEvict(value = "users",key = "#id")
+    @CacheEvict(value = "users", key = "#id")
     public User updateUser(UserDto userDto, Long id) {
         User user = userRepository.findById(id).orElse(null);
         user.setUsername(userDto.getUsername());

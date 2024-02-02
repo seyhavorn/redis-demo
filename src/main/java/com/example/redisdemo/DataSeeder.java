@@ -20,7 +20,7 @@ public class DataSeeder implements CommandLineRunner {
 
     private void createUsers() {
         Faker faker = new Faker();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             User user = new User();
             user.setUsername(faker.name().username());
             user.setEmail(faker.internet().emailAddress());

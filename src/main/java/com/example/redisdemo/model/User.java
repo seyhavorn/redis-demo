@@ -12,10 +12,9 @@ import java.util.Objects;
 
 
 @Entity(name = "users")
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
 
     @Id

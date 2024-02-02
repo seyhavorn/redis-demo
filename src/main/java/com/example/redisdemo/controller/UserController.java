@@ -2,15 +2,11 @@ package com.example.redisdemo.controller;
 
 import com.example.redisdemo.Dto.UserDto;
 import com.example.redisdemo.model.User;
-
 import com.example.redisdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @EnableCaching
